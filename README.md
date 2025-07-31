@@ -14,8 +14,6 @@ An AI-powered web automation interface that allows you to control browser intera
 - 🐳 **DevContainer Ready**: Pre-configured development environment
 - 💻 **Dual Interface**: Web UI and CLI options
 
-![Browser Console](./readmeimages/browser-console.png)
-
 ## Two Ways to Use
 
 ### 1. Web Interface (Recommended) 🌐
