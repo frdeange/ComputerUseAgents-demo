@@ -120,7 +120,7 @@ This script will:
 
 3. **Enter a task** and watch the AI navigate for you!
 
-![Task Execution](./readmeimages/task-execution.png)
+![Task Execution](./readmeimages/CUADemo.gif)
 
 ### Using Command Line
 
