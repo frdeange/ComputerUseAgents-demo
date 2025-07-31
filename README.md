@@ -1,83 +1,328 @@
-# Computer User Agent (CUA)
+# Computer Use Agents v2.0
 
-## Overview
-Computer User Agent (CUA) is an intelligent assistant designed to autonomously perform complex web-based tasks on behalf of the user. Leveraging advanced language models and browser automation, CUA can interpret natural language instructions, interact with web pages, and summarize or extract relevant information. This project demonstrates how an AI agent can be used to automate real-world information gathering and processing tasks.
+An AI-powered web automation interface that allows you to control browser interactions through natural language tasks.
 
-## What does the Assistant do?
-The assistant in this project is capable of:
-- Understanding and executing user-defined tasks (e.g., "Find the 4 most important news on marca.com and summarize them").
-- Using Azure OpenAI for natural language understanding and reasoning.
-- Automating browser actions to navigate, search, and extract content from websites.
-- Returning concise, human-readable summaries of the gathered information.
+![Web Interface](./readmeimages/web-interface.png)
 
-## Project Structure
-- `simplyagent.py`: Main entry point. Loads environment variables, initializes the language model, and runs the agent with a sample task.
-- `requirements.txt`: Lists all Python dependencies required to run the project.
-- `.fake.env`: Example environment file with placeholder values (see below).
+## Features
 
-## Getting Started
+- 🤖 **AI-Powered Browser Automation**: Uses advanced AI models to understand and execute web tasks
+- 🌐 **Beautiful Web Interface**: Clean, modern UI for task submission
+- 🖥️ **Real-time Browser Console**: Visual feedback through integrated browser console
+- ⚡ **FastAPI Backend**: High-performance async web framework
+- 🔄 **Live Status Updates**: Real-time task monitoring
+- 🐳 **DevContainer Ready**: Pre-configured development environment
+- 💻 **Dual Interface**: Web UI and CLI options
 
-### 1. Development Environment
-This project is designed to be used with a [devcontainer](https://containers.dev/), providing a pre-configured development environment with Python, and Azure CLI tools installed. You can open this project directly in GitHub Codespaces or any compatible devcontainer setup for a seamless experience.
+![Browser Console](./readmeimages/browser-console.png)
 
-### 2. Environment Variables
-Sensitive configuration (such as Azure OpenAI credentials) is managed via environment variables. For security, the repository includes a `.fake.env` file with example values. **You must create your own `.env` file before running the project:**
+## Two Ways to Use
 
-1. Copy `.fake.env` to `.env`:
-   ```sh
-   cp .fake.env .env
+### 1. Web Interface (Recommended) 🌐
+
+The web interface provides a beautiful, user-friendly way to interact with the AI agent:
+
+- **File**: `app_browser.py`
+- **Access**: `http://localhost:5000`
+- **Features**: 
+  - Modern, responsive UI
+  - Real-time status updates
+  - Automatic browser console opening
+  - Task examples and suggestions
+  - Visual feedback
+
+![Web Interface Demo](./readmeimages/web-demo.gif)
+
+### 2. Command Line Interface ⚡
+
+For quick tasks and automation scripts:
+
+- **File**: `app_cli.py`
+- **Usage**: Direct task execution
+- **Features**:
+  - Faster startup
+  - Script-friendly
+  - Command-line arguments support
+  - Perfect for automation
+
+![CLI Demo](./readmeimages/cli-demo.png)
+
+## Installation Options
+
+### Option 1: DevContainer (Recommended) 🐳
+
+This project includes a **complete DevContainer setup** with everything pre-configured:
+
+- Python 3.12 environment
+- All dependencies pre-installed
+- Browser automation tools (Playwright, Chromium)
+- Desktop environment with VNC access
+- Azure CLI integration
+
+**Requirements:**
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+**Setup:**
+1. Clone this repository
+2. Open in VS Code
+3. Click "Reopen in Container" when prompted
+4. Wait for the container to build (first time only)
+5. You're ready to go! 🚀
+
+### Option 2: Local Installation 💻
+
+If you prefer to run locally without Docker:
+
+**Requirements:**
+- Python 3.8 or higher
+- pip package manager
+- Node.js (for Playwright browser automation)
+- Git
+
+**Installation steps:**
+
+1. **Install Python dependencies:**
+   ```bash
+   pip install -r requirements.txt
    ```
-2. Edit `.env` and fill in your actual Azure OpenAI and deployment details:
-   - `AZURE_OPENAI_ENDPOINT`
-   - `AZURE_OPENAI_DEPLOYMENT`
-   - `AZURE_OPENAI_API_VERSION`
-   - `AZURE_OPENAI_KEY`
 
-### 3. Install Dependencies
-With your devcontainer or local environment ready, install the required Python packages (it would be installed by default with the build of the devcontainer, only required if you copy the repo to your local machine and do not use a devcontainer):
+2. **Install Playwright browsers:**
+   ```bash
+   playwright install-deps
+   playwright install chromium
+   ```
 
-```sh
+3. **Set up environment:**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your Azure OpenAI credentials
+   ```
+
+## Quick Start
+
+### Using the Quick Start Script (Easiest)
+
+```bash
+./run.sh
+```
+
+This script will:
+- Check for the `.env` file and create it if needed
+- Show you all available options
+- Start the application based on your choice
+
+### Using Web Interface
+
+1. **Start the web application:**
+   ```bash
+   python3 app_browser.py
+   ```
+
+2. **Open your browser** and navigate to `http://localhost:5000`
+
+3. **Enter a task** and watch the AI navigate for you!
+
+![Task Execution](./readmeimages/task-execution.png)
+
+### Using Command Line
+
+1. **Run with interactive prompt:**
+   ```bash
+   python3 app_cli.py
+   ```
+
+2. **Or pass task as argument:**
+   ```bash
+   python3 app_cli.py "Search for Python jobs on LinkedIn"
+   ```
+
+## Configuration
+
+Create a `.env` file with your Azure OpenAI credentials:
+
+```env
+AZURE_OPENAI_DEPLOYMENT=your-deployment-name
+AZURE_OPENAI_KEY=your-api-key
+```
+
+**How to get Azure OpenAI credentials:**
+
+1. Go to [Azure Portal](https://portal.azure.com/)
+2. Create an Azure OpenAI resource
+3. Deploy a model (e.g., GPT-4o)
+4. Get your API key and deployment name from the resource
+
+![Azure Setup](./readmeimages/azure-setup.png)
+
+## Example Tasks
+
+Here are some tasks you can try with the AI agent:
+
+### Research & Comparison
+- "Compare the pricing of GPT-4o and DeepSeek-V3 on their official websites"
+- "Find and compare the features of the top 3 project management tools"
+- "Research the latest trends in artificial intelligence"
+
+### News & Information
+- "Search for the latest AI news on TechCrunch"
+- "Find recent articles about sustainable energy on BBC News"
+- "Get the latest cryptocurrency market updates"
+
+### Weather & Location
+- "Find the current weather in New York and London"
+- "Check the weather forecast for this weekend in Paris"
+- "Find tourist attractions in Tokyo"
+
+### Job Search
+- "Search for Python developer job openings on LinkedIn"
+- "Find remote software engineering positions"
+- "Look for data science internships in California"
+
+### Shopping & Products
+- "Compare laptop prices on different e-commerce sites"
+- "Find the best-rated smartphones under $500"
+- "Search for eco-friendly cleaning products"
+
+![Task Examples](./readmeimages/task-examples.png)
+
+## Architecture
+
+### System Overview
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Web Browser   │    │   FastAPI App   │    │  Azure OpenAI   │
+│  (localhost:5000)│◄──►│ (app_browser.py)│◄──►│    Service      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+                                │
+                                ▼
+                       ┌─────────────────┐    ┌─────────────────┐
+                       │  Browser-Use    │◄──►│ Browser Console │
+                       │    Library      │    │ (localhost:6080)│
+                       └─────────────────┘    └─────────────────┘
+```
+
+### Components
+
+- **Frontend**: Modern HTML/CSS/JavaScript interface with responsive design
+- **Backend**: FastAPI with async support for high performance
+- **AI Engine**: Azure OpenAI integration via browser-use library
+- **Browser Control**: Automated browser interactions with Playwright
+- **Visual Feedback**: Real-time browser console with VNC access
+
+![Architecture Diagram](./readmeimages/architecture.png)
+
+## Development
+
+### DevContainer Development
+
+The project is optimized for DevContainer development:
+
+- **Auto-reload**: Changes are automatically detected and applied
+- **Pre-configured**: Everything set up and ready to use
+- **Isolated**: Clean environment without affecting your host system
+- **Portable**: Same environment for all developers
+
+### Local Development
+
+If developing locally:
+
+```bash
+# Start with auto-reload
+python3 app_browser.py
+
+# The server will restart automatically when you make changes
+```
+
+### Browser Console
+
+The browser console is available at `http://localhost:6080` and provides:
+
+- **Real-time visual feedback** of AI actions
+- **Desktop environment** accessible via web browser
+- **VNC connection** for advanced debugging
+- **Automatic opening** when tasks are submitted
+
+![Browser Console Interface](./readmeimages/browser-console-interface.png)
+
+## Troubleshooting
+
+### Common Issues
+
+**1. ModuleNotFoundError: No module named 'fastapi'**
+```bash
+# Solution: Install dependencies
 pip install -r requirements.txt
 ```
 
-### 4. Run the Assistant
-To launch the agent with the default task, run:
-
-```sh
-python simplyagent.py
+**2. Azure OpenAI Authentication Error**
+```bash
+# Solution: Check your .env file
+cp .env.example .env
+# Edit .env with correct credentials
 ```
 
-You can modify the `task` variable in `simplyagent.py` to change the agent's behavior.
+**3. Browser Console Not Opening**
+- Check if port 6080 is available
+- Ensure Docker Desktop is running (for DevContainer)
+- Try manually opening `http://localhost:6080`
 
-## Usage Instructions
-
-### Running the Project with a Visual Environment
-This project requires launching a browser (embedded with Playwright and Chromium) to perform its tasks. Since the browser needs a visual environment, you must run the application using a virtual framebuffer, at least if you execute the project from the devcontainer. To start the agent, use the following command:
-
-```sh
-xvfb-run python simplyagent.py
+**4. Port 5000 Already in Use**
+```bash
+# Solution: Kill existing processes
+pkill -f "python3 app_browser.py"
+# Or use a different port in app_browser.py
 ```
 
-This will ensure that the browser can run headlessly in environments without a physical display (such as devcontainers or remote servers).
+### DevContainer Issues
 
-### Devcontainer Setup
-All necessary dependencies, including Playwright, Chromium, and supporting tools, are pre-installed in the devcontainer. You do not need to install anything manually. Simply:
+**Container won't start:**
+- Ensure Docker Desktop is running
+- Check available disk space
+- Try rebuilding: `Ctrl+Shift+P` → "Dev Containers: Rebuild Container"
 
-1. Open the project in your devcontainer (e.g., GitHub Codespaces or VS Code with devcontainer support).
-2. Copy and configure your `.env` file as described above.
-3. Customize the `task` variable in `simplyagent.py` to define what you want the agent to do.
-4. Run the application with the command above.
+**Performance issues:**
+- Allocate more resources to Docker Desktop
+- Close unnecessary applications
+- Use local installation if DevContainer is too slow
 
-You are ready to use the Computer User Agent for your automated web tasks!
+## Requirements
 
-## What is Computer User Agent (CUA)?
-Computer User Agent (CUA) is a concept and implementation of an autonomous software agent that can:
-- Receive high-level instructions in natural language.
-- Use large language models (LLMs) to interpret and plan actions.
-- Interact with web browsers and APIs to accomplish tasks.
-- Summarize and present results in a user-friendly format.
+### For DevContainer (Recommended)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (4GB RAM minimum)
+- [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-This project serves as a practical example of CUA, focusing on web information retrieval and summarization using Azure OpenAI and browser automation.
+### For Local Installation
+- Python 3.8+ (3.12 recommended)
+- Node.js 16+ (for Playwright)
+- Git
+- 4GB RAM minimum
+- Azure OpenAI account and API key
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+### Development Setup
+1. Fork the repository
+2. Use the DevContainer for consistent environment
+3. Make your changes
+4. Test both web and CLI interfaces
+5. Submit a pull request
 
 ## License
-This project is provided for educational and demonstration purposes. Please review the license terms before using it in production.
+
+This project is open source and available under the MIT License.
+
+## Support
+
+- 📖 **Documentation**: Check this README for detailed instructions
+- 🐛 **Issues**: Report bugs or request features via GitHub Issues
+- 💬 **Discussions**: Share ideas and ask questions in GitHub Discussions
+
+---
+
+**Kiko de Angel Made with ❤️ for the AI automation community**
