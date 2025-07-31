@@ -31,8 +31,6 @@ The web interface provides a beautiful, user-friendly way to interact with the A
   - Task examples and suggestions
   - Visual feedback
 
-![Web Interface Demo](./readmeimages/web-demo.gif)
-
 ### 2. Command Line Interface ⚡
 
 For quick tasks and automation scripts:
@@ -154,8 +152,6 @@ AZURE_OPENAI_KEY=your-api-key
 3. Deploy a model (e.g., GPT-4o)
 4. Get your API key and deployment name from the resource
 
-![Azure Setup](./readmeimages/azure-setup.png)
-
 ## Example Tasks
 
 Here are some tasks you can try with the AI agent:
@@ -185,7 +181,6 @@ Here are some tasks you can try with the AI agent:
 - "Find the best-rated smartphones under $500"
 - "Search for eco-friendly cleaning products"
 
-![Task Examples](./readmeimages/task-examples.png)
 
 ## Architecture
 
@@ -211,8 +206,6 @@ Here are some tasks you can try with the AI agent:
 - **AI Engine**: Azure OpenAI integration via browser-use library
 - **Browser Control**: Automated browser interactions with Playwright
 - **Visual Feedback**: Real-time browser console with VNC access
-
-![Architecture Diagram](./readmeimages/architecture.png)
 
 ## Development
 
